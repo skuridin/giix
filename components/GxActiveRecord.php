@@ -591,9 +591,9 @@ abstract class GxActiveRecord extends CActiveRecord {
 
 		try {
 			// Start the transaction if required.
-			if ($options['withTransaction'] && ($this->getDbConnection()->getCurrentTransaction() === null)) {
+			if ($options['withTransaction'] && (self::getDbConnection()->getCurrentTransaction() === null)) {
 				$transacted = true;
-				$transaction = $this->getDbConnection()->beginTransaction();
+                $transaction = self::getDbConnection()->beginTransaction();
 			} else
 				$transacted = false;
 
@@ -638,7 +638,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 					}
 				} // This is the end of 'detectRelations' loop.
 				// Save the model
-				if (!$this->save($modelOptions['runValidation'], $modelOptions['attributes'])) {
+				if (!self::save($modelOptions['runValidation'], $modelOptions['attributes'])) {
 					if ($transacted)
 						$transaction->rollback();
 					return false;
