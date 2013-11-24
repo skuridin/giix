@@ -20,6 +20,10 @@ Yii::import('<?php echo "{$this->baseModelPath}.{$this->baseModelClass}"; ?>');
 
 class <?php echo $modelClass; ?> extends <?php echo $this->baseModelClass."\n"; ?>
 {
+	/**
+	* @param string $className
+	* @return <?php echo $modelClass; ?>
+	*/
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
 	}
